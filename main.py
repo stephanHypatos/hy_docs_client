@@ -90,8 +90,6 @@ if st.button("Fetch Documents"):
 
                 for doc_id in document_ids:
                     document = get_document_by_id(st.session_state['username'], st.session_state['password'], base_url, st.session_state['project_id'], doc_id,main_keys_input, entity_keys_input)
-                    #flattened_doc = flatten_json(document)
-                    #flattened_docs.append(flattened_doc)
                     flattened_docs.append(document)
 
                 df = pd.DataFrame(flattened_docs)
