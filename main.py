@@ -60,7 +60,7 @@ def get_document_by_id(username, password, base_url, project_id, doc_id, main_ke
 
 
 # Streamlit app
-st.title("Document Review")
+st.title("Get Documents Tool")
 
 # User inputs
 st.session_state['username']= st.text_input("Username")
