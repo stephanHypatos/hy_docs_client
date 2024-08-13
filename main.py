@@ -67,9 +67,11 @@ st.session_state['username']= st.text_input("Username")
 st.session_state['password']= st.text_input("Password", type="password")
 option = st.selectbox(
     "Select the Project",
-    ("2.1.Zeit_Rechnungen", "1.1.Handelsblatt_Rechnungen"))
+    ("2.1.Zeit_Rechnungen", "1.1.Handelsblatt_Rechnungen","3.1. Tagesspiegel - Rechnungen"))
 if option.startswith("2.1.Zeit"): 
     st.session_state['project_id'] = '62fac5f1b2ddfb95f3b076e4'
+elif option.startswith("3.1."): 
+    st.session_state['project_id'] = '62fac5a538021ca0392ca623'
 else: 
     st.session_state['project_id'] = '62fac51d68a5582b24f3ef31'
 
@@ -78,7 +80,7 @@ states = st.multiselect("Select one or n Document State(s)", ["reviewRequired", 
 
 # Input for main keys and entity keys
 main_keys_input =  st.multiselect("Select metadata", ["state", "projectId","id", "fileName", "uploadedAt"],["id", "fileName", "state"])
-entity_keys_input = st.multiselect("Select datapoints", ["deliveredAt", "issuedAt","type", "totals", "number","sender","vendor", "recipientCompany","recipient","ggId"],["type","ggId","number","issuedAt", "totals", "sender","recipient"])
+entity_keys_input = st.multiselect("Select datapoints", ["deliveredAt", "derivedDeliveryStartDate","issuedAt","type", "totals", "number","sender","vendor", "recipientCompany","recipient","ggId"],["type","ggId","number","issuedAt","deliveredAt", "derivedDeliveryStartDate","totals", "sender","recipient"])
 
 if st.button("Fetch Documents"):
     if st.session_state['username'] and st.session_state['password'] and base_url and st.session_state['project_id'] and states:
